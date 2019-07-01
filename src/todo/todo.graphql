@@ -1,0 +1,75 @@
+"""
+Task type. Serves to manage tasks created by user
+"""
+type Todo {
+    """
+    Todo Identifier. UUID
+    """
+    id: ID!
+    """
+    Task description
+    """
+    description: String!
+    """
+    Date when task was created
+    """
+    createdAt: Date!
+    """
+    Property that defines wether task is completed or no
+    """
+    completed: Boolean!
+    """
+    Property that resolves order of task
+    """
+    priority: Int!
+}
+
+"""
+Task input type. Serves to manage creation and update of tasks
+"""
+input InputTodo{
+    """
+    Task description
+    """
+    description: String!
+    """
+    Property that resolves order of task, min 1, max 32767
+    """
+    priority: Int
+}
+
+type Query{
+    """
+    Allows to retrieve a list of user tasks
+    """
+    listTodos: [Todo]
+}
+
+type Mutation{
+    """
+    Authorization required
+    Creates a new task
+    """
+    createTodo(input: InputTodo!): Todo!
+    """
+    Authorization required
+    Updates the task
+    """
+    updateTodo(id: ID!, input: InputTodo!): Todo
+    """
+    Authorization required
+    Completes the task
+    """
+    completeTodo(id: ID!): Todo
+    """
+    Authorization required
+    Marks the task as not completed
+    """
+    markIncompleteTodo(id: ID!): Todo
+    """
+    Authorization required
+    Deletes the task
+    """
+    deleteTodo(id: ID!): Boolean
+}
+

@@ -1,0 +1,62 @@
+type Query {
+    """
+    Authorization required
+    Get user's info
+    """
+    me: User
+}
+
+type Mutation {
+    """
+    Sign up new user
+    """
+    createUser(input: InputCreateUser): User!
+    """
+    Sign in user
+    """
+    login(input: InputLoginUser): LoginData
+}
+
+type User {
+    """
+    User id, UUID
+    """
+    id: String!
+    """
+    User name, login actually
+    """
+    name: String!
+}
+
+type LoginData {
+    """
+    Auth token. Should be put to Authorization header after login
+    """
+    token: String
+}
+"""
+Input type to login user
+"""
+input InputLoginUser {
+    """
+    User's name, login actually
+    """
+    name: String!
+    """
+    User's passwprd
+    """
+    password: String!
+}
+"""
+Input type to create new user
+"""
+input InputCreateUser {
+    """
+    User's name, login actually
+    """
+    name: String!
+    """
+    User's passwprd
+    """
+    password: String!
+}
