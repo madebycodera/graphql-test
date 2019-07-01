@@ -1,4 +1,4 @@
-##Configure app
+## Configure app
 Please provide .env file. You'll find out exmpale in exmple.env file.
 File should be named for environment correspondingly e.g. for development **development.env**
 Possible environments:
@@ -15,7 +15,7 @@ to creacte db structure.
 Just in case dump is provided in **dump.sql** file
 Postgres is used as db server.
  
-##Start app
+## Start app
 To start app 
 ```
 yarn start 
