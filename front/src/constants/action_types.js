@@ -1,0 +1,6 @@
+export const LOADING_TODOS = "LOADING_TODOS";
+export const TODOS_LOADED = "TODOS_LOADED";
+export const TODOS_UPDATED = "TODOS_UPDATED";
+
+export const TODO_CREATED = "TODO_CREATED";
+export const TODO_DELETED = "TODO_DELETED";

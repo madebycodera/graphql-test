@@ -1,0 +1,24 @@
+{
+  "name": "application-name",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "nodejs ./bin/www",
+    "debug": "nodemon --inspect ./bin/www"
+  },
+  "dependencies": {
+    "apollo-server-express": "^2.6.7",
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.4",
+    "debug": "~0.7.4",
+    "express": "^4.17.1",
+    "graphql": "^14.4.1",
+    "graphql-tools": "^4.0.5",
+    "morgan": "^1.9.1",
+    "pg": "^7.11.0",
+    "pg-hstore": "^2.3.3",
+    "sequelize": "^5.9.0",
+    "static-favicon": "~1.0.0",
+    "uuid-random": "^1.0.9"
+  }
+}
