@@ -1,8 +1,9 @@
-# MadeByCodera GraphQL Test
+# GraphQL Test
 
 ## Description
 
-You are tasked with writing the GraphQL api for a new Todo List mobile app.
+GraphQL api for a new Todo List mobile app.
+
 
 ### Todo GraphQL Type
 The structure of the Todo GraphQL Type according to the frontend developer should look like the following:
@@ -17,36 +18,35 @@ priority     | Int           | 1 is the highest priority. Defaults to 1.
 
 ### Todo GraphQL Query and Mutations
 And the frontend developer is counting on you to implement the following 5 methods under the GraphQL api endpoint:
-1. **List Todos** - Query - Retrieved todos can be sorted by the `priority`, `createdAt`, or `description` fields in ascending or descending order. By default the todos are unsorted. In addition, the todos can be filtered by the `completed` field.
-2. **Create todo** - Mutation - `description` is required. `priority` is optional and if not provided should default to 1. The rest of the fields: `id`, `createdAt`, and `completed` should have defaults supplied for them as noted in the Todo GraphQL Type mentioned above.
-3. **Update todo** - Mutation - Should update a todo based on the `id` provided in the request. `description` and/or `priority` fields can be updated. `priority` must be 1 or greater if sent in request.
-4. **Mark todo complete** - Mutation - Should update a todo's `complete` field to `true` based on the `id` provided in the request.
-4. **Delete todo** - Mutation - Should delete a todo based on the `id` provided in the request.
+1. **todosList** - Query - A query that returns todos. Retrieved todos can be sorted by the `priority`, `createdAt`, or `description` fields in ascending or descending order. By default the todos are unsorted. In addition, the todos can be filtered by the `completed` field.
+2. **create** - Mutation - To create a todo. `description` is required. `priority` is optional and if not provided should default to 1. The rest of the fields: `id`, `createdAt`, and `completed` should have defaults supplied for them as noted in the Todo GraphQL Type mentioned above.
+3. **update** - Mutation - Update a todo based on the `id` provided in the request. `description` and/or `priority` fields can be updated. `priority` must be 1 or greater if sent in request.
+4. **complete** - Mutation - Update a todo's `complete` field to `true` based on the `id` provided in the request.
+4. **delete** - Mutation - Delete a todo based on the `id` provided in the request.
 
 ### Documentation
 
-The front end developer would also like a little bit of documentation to help him use the api. The easiest way to provide documentation is to add comments to each query, mutation, and type that is defined in the GraphQL schema. The following multi-line comments example highlights how you should be declaring comments in the query, mutation, or type definitions:
+1. A MongoDB server is required. You can install it locally or run it with `docker`.
 
-```
-"""
-<my comments go here>
-"""
-```
+    Run with docker:
+    
+    -  `docker pull mongo`
+    -  `docker run -d -p 27017:27017 mongo`
 
-This will make it very easy for the frontend developer to see them when inspecting the running GraphQL server using [GraphQL Playground](https://www.apollographql.com/docs/apollo-server/features/graphql-playground/)
+2. Import data from dump
 
-As demonstrated in the following screenshot
+    `cat dump.gz | docker run --rm -i mongo mongorestore --host <YOUR_LOCAL_IP> --archive --gzip --drop --db=todo`
+    
+3. Install dependencies
 
-[![graphql-playground-example.png](https://i.postimg.cc/rw6HMzmt/graphql-playground-example.png)](https://postimg.cc/VdRgFfXY)
+    `yarn`
+    
+4. Run a server
 
-## Instructions
-1. Fork this repository. Do all of your work on your personal fork. Then create a new pull request on your personal fork
-2. You must implement this graphql backend using [Apollo Server](https://www.apollographql.com/docs/apollo-server/)
-3. You can use whatever data structure you are most comfortable with for storing the data such as in-memory, MySQL, Postgres, SQLite, MongoDB, etc... . Using Postgres is preferred and considered a plus, since that is what we use currently.
-4. This repo should be an npm project such that we can install the dependencies that you define for the server in order to run it using Node.
+    `yarn start`
 
-Here is an example of creating a pull request from a fork of a repository:
-[![pull-request-example.png](https://i.postimg.cc/QCgrr53S/pull-request-example.png)](https://postimg.cc/RJ0Y7Wqn)
 
-## NOTE
-If you are not storing the data in-memory, please commit a sql dump file of the database schema to the repo. Please add a note of where this file is located in this `README.md` if the sql dump is not located at the root of the repo. Your submission will be **DISCARDED** if you **DO NOT** commit a sql dump file for your implementation, if it uses a database.
+
+# Postgres
+
+For Postrges DB one of the best choice is [Hasura.io](https://hasura.io/ "Instant Realtime GraphQL on Postgres").
