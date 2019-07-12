@@ -1,0 +1,16 @@
+enum SortByEnum {
+    ASC
+    DESC
+}
+
+"""
+Get todo list input parameters
+"""
+input GetTodoListInput {
+    """
+    Available values for 'orderBy' are Todo type fields
+    """
+    orderBy: String
+    sortBy: SortByEnum
+    completed: Boolean
+}

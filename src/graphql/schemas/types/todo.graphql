@@ -1,0 +1,10 @@
+"""
+Todo type
+"""
+type Todo {
+    id: Int!
+    description: String!
+    createdAt: Date!
+    completed: Boolean!
+    priority: Int!
+}
