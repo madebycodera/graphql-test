@@ -1,0 +1,30 @@
+# import * from './inputs/index.graphql'
+# import * from './types/index.graphql'
+
+scalar Date
+
+type Query {
+    """
+    Get list of all todos.
+    """
+    getTodoList(input: GetTodoListInput): [Todo]!
+}
+
+type Mutation {
+    """
+    Create new todo with a description and/or priority. By default priority is 1
+    """
+    createTodo(description: String!, priority: Int): Todo
+    """
+    Update existing todo with new description and/or priority by its ID
+    """
+    updateTodo(id: Int!, description: String!, priority: Int): Todo
+    """
+    Mark existing todo as completed by its ID
+    """
+    markTodoComplete(id: Int!): Message
+    """
+    Delete existing todo by its ID
+    """
+    deleteTodo(id: Int!): Message
+}
