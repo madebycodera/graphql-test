@@ -1,10 +1,10 @@
 # GraphQL Test Task
 
-## App configuration
+### App configuration
 
 - add `.env` file with environment variables (see `example.env`);
 
-## DB configuration
+### DB configuration
 
 PostgreSQL v11.4 is used as data source
 
@@ -14,15 +14,15 @@ PostgreSQL v11.4 is used as data source
 
 **Note:** Sql dump is located under `./graphql-test-task.dump.sql`.
 
-## Start app
+### Start app
 
 To start app just run `npm start`.
 
-P.S Do not forget to install npm modules `npm i`.
+P.S Do not forget to install npm modules (`npm i`).
 
 **Note:** GraphQL Playground can be found on the following address `<host>/graphql`
 
-## Test app
+### Test app
 
 - start the app by running `npm start`
 - run `sh test.sh` to test query and mutations
