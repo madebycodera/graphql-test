@@ -7,6 +7,8 @@ npm install
 npm run dev
 ```
 
+# Project doesn't require DB dump since TypeORM will create needed table for you automatically.
+
 # MadeByCodera GraphQL Test
 
 ## Description
