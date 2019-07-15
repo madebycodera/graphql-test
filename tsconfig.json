@@ -10,7 +10,12 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "outDir": "dist",
-    "skipLibCheck": true
+    "baseUrl": ".",
+    "skipLibCheck": true,
+    "paths": {
+      "*": ["node_modules/*", "src/types/*"]
+    },
+    "lib": ["es2015", "es2017", "es2018", "esnext.asynciterable", "dom"]
   },
-  "include": ["src/**/*"]
+  "include": ["src/**/*", "node_modules/*"]
 }
