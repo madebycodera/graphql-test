@@ -1,0 +1,55 @@
+{
+  "name": "graphql-test",
+  "version": "1.0.0",
+  "description": "## Description",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "generate": "graphql-codegen --config graphql-codegen.yml",
+    "build": "tsc -p tsconfig.build.json",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "start": "tsc --build && node dist",
+    "dev": "tsc --build && node --inspect dist",
+    "start:dev": "ts-node-dev --respawn --transpileOnly src/index.ts",
+    "start:debug": "nodemon --config nodemon-debug.json",
+    "prestart:prod": "rimraf dist && npm run build",
+    "start:prod": "node dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://v-anton@github.com/v-anton/graphql-test.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/v-anton/graphql-test/issues"
+  },
+  "homepage": "https://github.com/v-anton/graphql-test#readme",
+  "dependencies": {
+    "apollo-server": "^2.6.9",
+    "class-validator": "^0.9.1",
+    "graphql": "^14.4.2",
+    "lodash-es": "^4.17.14",
+    "pg": "^7.11.0",
+    "type-graphql": "^0.17.4",
+    "typedi": "^0.8.0",
+    "typeorm": "^0.2.18"
+  },
+  "devDependencies": {
+    "@graphql-codegen/cli": "^1.4.0",
+    "@graphql-codegen/introspection": "1.4.0",
+    "@graphql-codegen/typescript": "1.4.0",
+    "@graphql-codegen/typescript-document-nodes": "1.4.0",
+    "@graphql-codegen/typescript-resolvers": "1.4.0",
+    "@types/graphql": "^14.2.2",
+    "@types/lodash-es": "^4.17.3",
+    "@types/pg": "^7.4.14",
+    "graphql-tools": "^4.0.5",
+    "inversify": "^5.0.1",
+    "reflect-metadata": "^0.1.13",
+    "ts-node-dev": "^1.0.0-pre.40",
+    "typeorm-typedi-extensions": "^0.2.3",
+    "typescript": "^3.5.3"
+  }
+}
