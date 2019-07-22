@@ -13,6 +13,24 @@ priority     | Int           | 1 is the highest priority. Defaults to 1.
 ### Todo GraphQL Query and Mutations
 
 1. **List Todos** - Mutation to update existing Todo
+Examples
+```
+  {
+    todos {
+      _id,
+      createdAt,
+      priority,
+      completed
+    }
+  }
+```
+```
+  {
+    todo(id: "5d35ab185c1d0452a888ea63") {
+      _id
+    }
+  }
+```
 2. **createTodo** - Mutation to create new Todo.
 3. **updateTodo** - Mutation - Should update a todo based on the `id` provided in the request. `description` and/or `priority` fields can be updated. `priority` must be 1 or greater if sent in request.
 4. **markCompleted** - Mutation to mark existing Todo as completed.
