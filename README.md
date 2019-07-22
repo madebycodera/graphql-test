@@ -1,5 +1,9 @@
 # GraphQL Api Test Task
 
+**npm run dev** - to start dev server
+
+http://localhost:4001/graphql/v1/playground - test playground
+
 ### Todo GraphQL Type
 
 Field        | Data Type     | Description
