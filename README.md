@@ -31,9 +31,43 @@ Examples
     }
   }
 ```
+
+  }
 2. **createTodo** - Mutation to create new Todo.
+```
+  mutation {
+    createTodo(description: "test", completed: false, priority: 2) {
+      description,
+      completed,
+      _id
+    }
+  }
+```
 3. **updateTodo** - Mutation - Should update a todo based on the `id` provided in the request. `description` and/or `priority` fields can be updated. `priority` must be 1 or greater if sent in request.
+```
+  mutation {
+    updateTodo(id: "5d35b16969e04e56fbf19302") {
+       priority,
+       _id
+    }
+  }
+```
 4. **markCompleted** - Mutation to mark existing Todo as completed.
+``` 
+  mutation {
+    markCompleted(id: "5d35b16969e04e56fbf19302") {
+      _id,
+      createdAt,
+      priority,
+        completed
+    }
+  }
+```
 4. **deleteTodo** - Mutation to delete existing Todo based on id.
-
-
+``` 
+  mutation {
+    deleteTodo(id: "5d359accf055c247a7748bd9") {
+      _id
+    }
+  }
+```
