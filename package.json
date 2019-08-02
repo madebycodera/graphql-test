@@ -1,0 +1,31 @@
+{
+  "name": "graphql-v1",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "apollo-datasource": "^0.6.1",
+    "apollo-server": "^2.8.1",
+    "apollo-server-express": "^2.8.1",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "eslint-config-airbnb": "^17.1.1",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.14.3",
+    "express": "~4.16.1",
+    "graphql": "^14.4.2",
+    "http-errors": "~1.6.3",
+    "morgan": "~1.9.1",
+    "pg": "^7.12.0",
+    "pug": "2.0.0-beta11",
+    "sequelize": "^5.12.2"
+  },
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^13.2.0",
+    "eslint-plugin-import": "^2.18.2",
+    "nodemon": "^1.19.1"
+  }
+}
