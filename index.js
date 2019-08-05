@@ -13,5 +13,5 @@ app.get('*', (req, res, next) => next());
 server.applyMiddleware({ app });
 
 app.listen(4000, () => {
-  console.log('🚀  Server ready at localhost:4000');
+  console.log('🚀  Server ready at localhost:4000/graphql');
 });

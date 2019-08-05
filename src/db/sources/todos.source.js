@@ -1,6 +1,6 @@
 const { Todos } = require('../service');
 
-const getAllTodos = async (data = {}) => {
+const getAllTodos = (data = {}) => {
   const { sortField = null, sortOrder = 'asc', completed = null } = data;
   const query = {};
   if (completed !== null) { query.where = { completed }; }
@@ -9,23 +9,24 @@ const getAllTodos = async (data = {}) => {
     .then(res => res.map(todo => computeTodo(todo)));
 };
 
-const createTodo = async ({ description, priority }) => {
+const createTodo = ({ description, priority }) => {
   const newPriority = priority < 1 ? 1 : priority;
   return Todos.create({ description, priority: newPriority })
     .then(todo => computeTodo(todo));
 };
 
-const deleteTodo = async ({ id }) => Todos.destroy({ where: { id } })
+const deleteTodo = ({ id }) => Todos.destroy({ where: { id } })
   .then(() => `Todo with id: ${id} has been successfully deleted.`);
 
-const updateTodo = async ({ id, description, priority }) => {
+const updateTodo = ({ id, description, priority }) => {
   const newPriority = priority < 1 ? 1 : priority;
   return Todos.update({ description, priority: newPriority }, { where: { id } })
     .then(() => Todos.findOne({ where: { id } }))
     .then(todo => computeTodo(todo));
 };
 
-const completeTodo = async ({ id }) => Todos.update({ completed: true }, { where: { id } })
+const completeTodo = ({ id }) => Todos.update({ completed: true }, { where: { id } })
+  .then(() => Todos.findOne({ where: { id } }))
   .then(res => computeTodo(res));
 
 const computeTodo = todo => ({
