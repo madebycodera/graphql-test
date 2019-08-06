@@ -1,0 +1,3 @@
+const BaseService = require('./BaseService');
+
+module.exports = { BaseService };
