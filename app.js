@@ -3,6 +3,8 @@ const http = require('http');
 const https = require('https');
 const express = require('express');
 const path = require('path');
+const { saveToFile } = require('./db');
+const { todos } = require('./fixtures');
 
 const config = require('./config/config');
 
@@ -29,5 +31,9 @@ require('./server/log')(app);
 require('./server/routes')(app);
 require('./server/graphql')(app);
 require('./server/cluster')(server, port, config.app.modeCluster);
+
+saveToFile(todos).then(() => {
+  console.log('Database was successfully seeded');
+});
 
 module.exports = app;
