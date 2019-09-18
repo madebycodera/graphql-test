@@ -1,10 +1,10 @@
 # GraphQL Api Test Task
 
-**npm run dev** - to start dev server
+start dev server: **npm run dev**
 
-http://localhost:4001/graphql/v1/playground - test playground
+http://localhost:4001/graphql1 - test playground
 
-### Todo GraphQL Type
+### GraphQL Types
 
 Field        | Data Type     | Description
 ------------ | ------------- | -------------
@@ -14,10 +14,9 @@ createdAt    | Date          | Tells us when the todo was created. Defaults to c
 completed    | Boolean       | Indicates if the todo is complete. Defaults to false.
 priority     | Int           | 1 is the highest priority. Defaults to 1.
 
-### Todo GraphQL Query and Mutations
+### GraphQL Examples
 
-1. **List Todos** - Mutation to update existing Todo
-Examples
+Queries:
 ```
   {
     todos {
@@ -35,9 +34,7 @@ Examples
     }
   }
 ```
-
-  }
-2. **createTodo** - Mutation to create new Todo.
+Mutations:
 ```
   mutation {
     createTodo(description: "test", completed: false, priority: 2) {
@@ -47,7 +44,7 @@ Examples
     }
   }
 ```
-3. **updateTodo** - Mutation - Should update a todo based on the `id` provided in the request. `description` and/or `priority` fields can be updated. `priority` must be 1 or greater if sent in request.
+
 ```
   mutation {
     updateTodo(id: "5d35b16969e04e56fbf19302") {
@@ -56,7 +53,7 @@ Examples
     }
   }
 ```
-4. **markCompleted** - Mutation to mark existing Todo as completed.
+
 ``` 
   mutation {
     markCompleted(id: "5d35b16969e04e56fbf19302") {
@@ -67,7 +64,7 @@ Examples
     }
   }
 ```
-4. **deleteTodo** - Mutation to delete existing Todo based on id.
+
 ``` 
   mutation {
     deleteTodo(id: "5d359accf055c247a7748bd9") {
