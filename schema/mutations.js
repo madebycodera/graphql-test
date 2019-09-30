@@ -7,7 +7,7 @@ const Mutations = {
         return db.query(query, args.todo)
         .then(data => {
             console.log('then', data);
-            return data;
+            return data[0];
         })
         .catch(err => {
             console.log('catch', err);
@@ -26,12 +26,26 @@ const Mutations = {
         return db.query(query, args.id)
         .then(data => {
             console.log('then', data);
-            return data;
+            return data[0];
         })
         .catch(err => {
             console.log('catch', err);
             return 'The error is', err;
         });
+    },
+    completeTodo: (_,args,ctx) => {
+        let set = '';
+        const query = 'UPDATE todo SET completed=\'true\' WHERE id = $1 RETURNING id';
+        console.log('todo',args,ctx, query);
+        return db.query(query, args.id)
+            .then(data => {
+                console.log('then', data);
+                return data[0];
+            })
+            .catch(err => {
+                console.log('catch', err);
+                return 'The error is', err;
+            });
     },
     deleteTodo: (_,args,ctx) => {
         const query = 'DELETE FROM todo WHERE id = $1 RETURNING id';
@@ -39,7 +53,7 @@ const Mutations = {
         return db.query(query, args.id)
         .then(data => {
             console.log('then', data);
-            return data;
+            return data[0];
         })
         .catch(err => {
             console.log('catch', err);

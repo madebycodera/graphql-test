@@ -31,6 +31,7 @@ input AddTodo {
 type Mutation {
     addTodo(todo: AddTodo!): Todo
     editTodo(id: ID!, todo: AddTodo): Todo
+    completeTodo(id: ID!): Todo
     deleteTodo(id: ID!): Todo
   }
 
