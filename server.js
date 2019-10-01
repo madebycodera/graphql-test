@@ -1,22 +1,17 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const { ApolloServer } = require('apollo-server');
 const { graphqlExpress, graphiqlExpress } = require('apollo-server-express');
-const schema = require('./schema');
+const { typeDefs, resolvers } = require('./schema');
 
-// Initialize the app
-const app = express();
+const server = new ApolloServer({
+    typeDefs,
+    resolvers,
+    introspection: true,
+    playground: true,
+});
 
-// The GraphQL endpoint
-app.use('/graphql', bodyParser.json(), graphqlExpress(req => {
-    return {
-        schema: schema,
-    };
-}));
 
-// GraphiQL, a visual editor for queries
-app.use('/graphiql', graphiqlExpress({ endpointURL: '/graphql' }));
-
-// Start the server
-app.listen(3000, () => {
-    console.log('Go to http://localhost:3000/graphiql to run queries!');
+server.listen().then(({ url }) => {
+    console.log(`🚀 Server ready at ${url}`);
 });

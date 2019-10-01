@@ -1,5 +1,3 @@
-const { makeExecutableSchema } = require('graphql-tools');
-
 const Mutations = require('./mutations');
 const Query = require('./queries');
 const Date = require('./date');
@@ -7,11 +5,6 @@ const Date = require('./date');
 const schemaString = `
 
 scalar Date
-
-type Query {
-    todo(id: ID): Todo,
-    allTodos: [Todo]
-}
 
 type Todo {
     id: ID
@@ -21,11 +14,23 @@ type Todo {
     priority: Int
 }
 
+input AllFilters {
+    completed: Boolean
+    sort_by: String
+    desc: Boolean
+}
+
 input AddTodo {
     description: String
     created_at: Date
     completed: Boolean
     priority: Int
+}
+
+type Query {
+    todo(id: ID): Todo,
+    allTodos(filters: AllFilters): [Todo]
+    getError: String
 }
 
 type Mutation {
@@ -43,4 +48,7 @@ const resolverMap = {
     Mutation: Mutations
 };
 
-module.exports = makeExecutableSchema({ typeDefs: schemaString, resolvers: resolverMap });
+module.exports = {
+    typeDefs: schemaString,
+    resolvers: resolverMap
+};
