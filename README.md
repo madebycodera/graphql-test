@@ -58,5 +58,10 @@ Here is an example of creating a pull request from a fork of a repository:
 If you are not storing the data in-memory, please commit a sql dump file of the database schema to the repo. Please add a note of where this file is located in this `README.md` if the sql dump is not located at the root of the repo. Your submission will be **DISCARDED** if you **DO NOT** commit a sql dump file for your implementation, if it uses a database.
 
 
-## To connect to DB
+## BEFORE TO START
 Please update db.env file with your db credentials
+
+After run
+````
+npm start
+````
