@@ -7,7 +7,7 @@ const typeDefs = gql`
   type Todo {
     id: String!
     description: String!
-    createdAt: Int
+    createdAt: String
     completed: Boolean
     priority: Int
   }
