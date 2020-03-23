@@ -32,4 +32,6 @@
 - MongoDB
 - NOTE: in index.js add your mongo url (local or Atlas cluster)
 const url = 'YOUR_MONGO_DB_URI’;
+- Name you database: "mytodos"
+- Create a collection in the database called: "todos"
 - dump in mongodb_dump in root
