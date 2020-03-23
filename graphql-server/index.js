@@ -4,7 +4,7 @@ const typeDefs = require('./schema/type_defs');
 const resolvers = require('./schema/resolvers');
 
 // MongoDB
-const url = 'mongodb+srv://giuliogola:VSCD3UmE6nj1ISNk@mytodos-ybsli.mongodb.net/test?retryWrites=true&w=majority';
+const url = 'YOUR_MONGO_URI';
 const client = new MongoClient(url, {
   useNewUrlParser: true,
   useUnifiedTopology: true
