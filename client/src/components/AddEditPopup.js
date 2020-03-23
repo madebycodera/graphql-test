@@ -71,7 +71,7 @@ const AddEditPopup = props => {
                 onPress={
                     title === ADD ? 
                     callback.bind(this, text, parseInt(priority)) 
-                    : callback.bind(this, item.id, text, parseInt(priority))}
+                    : callback.bind(this, item._id, text, parseInt(priority))}
             />
         </Animated.View>
     );

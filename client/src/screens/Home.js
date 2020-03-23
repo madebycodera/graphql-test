@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, SafeAreaView, Text, StyleSheet, TouchableOpacity, Dimensions, ActivityIndicator } from 'react-native';
+import { View, SafeAreaView, Text, StyleSheet, TouchableOpacity, Dimensions, ActivityIndicator, ScrollView } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import { useMutation, useQuery } from '@apollo/react-hooks';
@@ -47,7 +47,7 @@ const Home = () => {
     const addTodoHandler = (text, priority) => {
         if (text && text.trim() != '') {
             const newItem = {
-                id: 1000,
+                _id: 1000,
                 createdAt: new Date(),
                 description: text,
                 priority: priority || 1,
@@ -72,7 +72,7 @@ const Home = () => {
     // Called when todo is edited
     const updateTodoHandler = (id, text, priority) => {
         if (text && text.trim() != '') {
-            const editedItem = todos.find(todo => todo.id === id);
+            const editedItem = todos.find(todo => todo._id === id);
             updateTodoMutation({
                 variables: {
                     id: id,
@@ -82,7 +82,7 @@ const Home = () => {
                 optimisticResponse: {
                     __typename: 'Mutation',
                     updateTodo: {
-                        id: id,
+                        _id: id,
                         createdAt: editedItem.createdAt,
                         description: text,
                         priority: priority || 1,
@@ -101,7 +101,7 @@ const Home = () => {
     // Called when todo is deleted
     const deleteTodoHandler = (id) => {
         const filteredItems = todos.filter(todo => {
-            return todo.id !== id;
+            return todo._id !== id;
         });
         const sortedItems = sortItems(filteredItems, filter, sorting);
         setTodos(sortedItems);
@@ -119,13 +119,13 @@ const Home = () => {
     const toggleDoneHandler = (item) => {
         toggleDoneMutation({
             variables: {
-                id: item.id,
+                id: item._id,
                 completed: item.completed
             },
             optimisticResponse: {
                 __typename: 'Mutation',
                 toggleDone: {
-                    id: item.id,
+                    _id: item._id,
                     createdAt: item.createdAt,
                     description: item.description,
                     priority: item.priority,
@@ -159,7 +159,7 @@ const Home = () => {
             if (filterType === DATE) {
                 return sortingType === ASCENDING ? a.createdAt > b.createdAt : a.createdAt < b.createdAt;
             } else if (filterType === PRIORITY) {
-                return sortingType === ASCENDING ? a.priority > b.priority : a.priority < b.priority;
+                return sortingType === ASCENDING ? a.priority < b.priority : a.priority > b.priority;
             } else if (filterType === DESCRIPTION) {
                 return sortingType === ASCENDING ? a.description > b.description : a.description < b.description;
             }
@@ -190,7 +190,7 @@ const Home = () => {
                 </TouchableOpacity>
                 <TouchableOpacity
                     activeOpacity={1.0} 
-                    onPress={deleteTodoHandler.bind(this, item.id)}>
+                    onPress={deleteTodoHandler.bind(this, item._id)}>
                     <Icon 
                         name='close'
                         color={Colors.RED}
@@ -234,14 +234,16 @@ const Home = () => {
                             <Text style={styles.descriptionText}>Looks so empty here...add a todo!</Text> 
                         </View>  
                     :    
-                        <View style={styles.todoListContainer}>
-                            {todos.map(todo => {
-                                return <TodoItem
-                                    key={todo.id}
-                                    item={todo}
-                                />
-                            })}
-                        </View>
+                        <ScrollView>
+                            <View style={styles.todoListContainer}>
+                                {todos.map(todo => {
+                                    return <TodoItem
+                                        key={todo._id}
+                                        item={todo}
+                                    />
+                                })}
+                            </View>
+                        </ScrollView>
                     )
                 )
             }
@@ -321,7 +323,8 @@ const styles = StyleSheet.create({
     todoListContainer: {
         marginTop: 40,
         width: Dimensions.get('window').width,
-        paddingHorizontal: 20
+        paddingHorizontal: 20,
+        marginBottom: 90
     },
     todoItemContainer: {
         paddingHorizontal: 20,

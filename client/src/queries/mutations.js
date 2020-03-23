@@ -9,7 +9,7 @@ import gql from 'graphql-tag';
 export const addTodo = gql `
     mutation AddTodo($description: String!, $priority: Int) {
         addTodo(description: $description, priority: $priority) {
-            id
+            _id
             description
             createdAt
             completed
@@ -20,13 +20,13 @@ export const addTodo = gql `
 
 /**
  * Deletes a todo
- * @param  {ID} id  todo id
+ * @param  {String} id  todo id
  * @return {List} the todos left
  */
 export const deleteTodo = gql`
-    mutation DeleteTodo($id: ID!) {
+    mutation DeleteTodo($id: String!) {
         deleteTodo(id: $id) {
-            id
+            _id
             description
             createdAt
             priority
@@ -37,14 +37,14 @@ export const deleteTodo = gql`
 
 /**
  * Toggles done for a todo
- * @param  {ID} id  todo id
+ * @param  {String} id  todo id
  * @param  {Bool} completed  todo completed bool value
  * @return {List} the todos updated
  */
 export const toggleDone = gql `
-    mutation ToggleDone($id: ID!, $completed: Boolean!) {
+    mutation ToggleDone($id: String!, $completed: Boolean!) {
         toggleDone(id: $id, completed: $completed) {
-            id
+            _id
             description
             createdAt
             priority
@@ -55,15 +55,15 @@ export const toggleDone = gql `
 
 /**
  * Updates a todo
- * @param  {ID} id  todo id
+ * @param  {String} id  todo id
  * @param  {String} description  todo description
  * @param  {Number} priority  todo priority (optional)
  * @return {List} the updated todos in the list
  */
 export const updateTodo = gql`
-    mutation UpdateTodo($id: ID!, $description: String!, $priority: Int) {
+    mutation UpdateTodo($id: String!, $description: String!, $priority: Int) {
         updateTodo(id: $id, description: $description, priority: $priority) {
-            id
+            _id
             description
             createdAt
             priority

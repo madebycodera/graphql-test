@@ -21,15 +21,15 @@
     - Ascending/Descending
 
 # Server side
-- http://localhost:4003/
-- GraphQL playground: http://localhost:4003/graphql
-- Entry point server.js
-- In server folder
+- GraphQL playground: http://localhost:4000/
+- Entry point index.js
+- In index folder
     $ npm install
-    $ node server.js
+    $ node index.js
+- Test graphql queries and mutations in test.sh
 
 # Database
 - MongoDB
-- NOTE: in server/server.js add your mongo URI (local or Atlas cluster)
-const MONGO_URI = 'YOUR_MONGO_DB_URI’;
+- NOTE: in index.js add your mongo url (local or Atlas cluster)
+const url = 'YOUR_MONGO_DB_URI’;
 - dump in mongodb_dump in root
