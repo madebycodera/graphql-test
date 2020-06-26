@@ -1,0 +1,30 @@
+# import * from './input/index.graphql'
+# import * from './type/index.graphql'
+
+scalar Date
+
+type Query {
+  """
+  List Todos - Query - Retrieved todos can be sorted by the priority, createdAt, or description fields in ascending or descending order. By default the todos are unsorted. In addition, the todos can be filtered by the completed field.
+  """
+  listTodo(input: GetTodoListInput): [Todo]!
+}
+
+type Mutation {
+  """
+  Create todo - Mutation - description is required. priority is optional and if not provided should default to 1. The rest of the fields: id, createdAt, and completed should have defaults supplied for them as noted in the Todo GraphQL Type mentioned above.
+  """
+  createTodo(description: String!, priority: Int): Todo
+  """
+  Update todo - Mutation - Should update a todo based on the id provided in the request. description and/or priority fields can be updated. priority must be 1 or greater if sent in request.
+  """
+  updateTodo(id: String!, description: String!, priority: Int): Todo
+  """
+  Mark todo complete - Mutation - Should update a todo's complete field to true based on the id provided in the request.
+  """
+  markTodoComplete(id: String!): Todo
+  """
+  Delete todo - Mutation - Should delete a todo based on the id provided in the request.
+  """
+  deleteTodo(id: String!): Message
+}

@@ -1,0 +1,18 @@
+"""
+Message type
+"""
+type Message {
+  message: String
+  statusCode: String
+}
+
+"""
+Todo type
+"""
+type Todo {
+  id: String!
+  description: String!
+  createdAt: Date!
+  completed: Boolean!
+  priority: Int!
+}
