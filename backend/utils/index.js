@@ -6,14 +6,14 @@ const SORT_ENUM = {
 const makeListTodoQuery = ({ orderBy, sortBy, completed }) => {
   const query = {};
 
-  if (typeof completed !== "undefined") {
+  if (completed === true || completed === false) {
     query.completed = completed;
   }
 
-  if (typeof orderBy !== "undefined") {
+  if (orderBy) {
     query.orderBy = orderBy;
 
-    if (typeof sortBy !== "undefined") {
+    if (sortBy) {
       query.sortBy = SORT_ENUM[sortBy];
     } else {
       query.sortBy = SORT_ENUM.ASC;
